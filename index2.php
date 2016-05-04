@@ -1,4 +1,4 @@
-<?php require('check.php'); ?>
+<?php session_start(); ?>
 <?php require('db.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,11 +46,16 @@
     <div>
         <p>
             <?php
+
+            echo(session_id());
+            echo('<br>');
+            echo($_SESSION['info']);
             if (!isset($_SESSION['count'])) {
                 $_SESSION['count'] = 0;
             } else {
                 $_SESSION['count']++;
             }
+            echo('broj otvaranja' . $_SESSION['count']);
 
             $sql = "SELECT id, registracija, ime FROM automobili";
             $result = $conn->query($sql);
